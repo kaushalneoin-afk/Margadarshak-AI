@@ -175,10 +175,10 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
         >
-          <span className="text-white">AI Urban Traffic</span>
+          <span className="text-white">The Future of</span>
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-            Digital Twin
+            Intelligent Traffic Management
           </span>
         </motion.h1>
 
@@ -188,7 +188,7 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg md:text-xl text-white/50 max-w-4xl mx-auto mb-10 leading-relaxed"
         >
-          Predicting, Preventing and Optimizing Urban Traffic Through Artificial Intelligence
+          Predicting, Preventing and Optimizing Urban Traffic Through AI &amp; Machine Learning
         </motion.p>
 
         <motion.div

@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 
 class TrafficData(BaseModel):
@@ -43,19 +43,33 @@ class AIQuery(BaseModel):
     context: dict = {}
 
 
-class VideoProcessResponse(BaseModel):
-    vehicle_count: int
-    vehicle_types: dict
-    average_speed: float
-    density: str
-    congestion_score: float
-    lane_occupancy: dict
-    recommendations: list
+class ManualAnalysisInput(BaseModel):
+    vehicle_count: int = Field(..., ge=0, le=2000)
+    average_speed: float = Field(..., ge=0, le=120)
+    lane_occupancy: float = Field(..., ge=0, le=100)
+    emergency_vehicle: bool = False
+    accident_present: bool = False
+    weather_condition: str = "clear"
+    road_capacity: Optional[float] = None
 
 
-class PredictionResponse(BaseModel):
-    congestion_level: str
-    confidence: float
-    time_horizon: str
-    factors: list
-    recommendations: list
+class JudgeEvaluation(BaseModel):
+    vehicle_count: int = Field(..., ge=0, le=2000)
+    average_speed: float = Field(..., ge=0, le=120)
+    lane_occupancy: float = Field(..., ge=0, le=100)
+    emergency_vehicle: bool = False
+    incident_status: str = "none"
+
+
+class VideoDetectionResult(BaseModel):
+    type: str
+    confidence: float = Field(..., ge=0, le=1)
+    bbox: List[float] = []
+    lane: Optional[int] = None
+    speed_estimate: Optional[float] = None
+
+
+class ScenarioData(BaseModel):
+    scenario_type: str
+    intensity: float = 0.5
+    custom_parameters: dict = {}

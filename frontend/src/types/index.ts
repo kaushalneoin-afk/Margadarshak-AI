@@ -115,3 +115,66 @@ export interface ZoneData {
   vehicles: number;
   coordinates: { x: number; y: number };
 }
+
+export interface ManualAnalysisInput {
+  vehicle_count: number;
+  average_speed: number;
+  lane_occupancy: number;
+  emergency_vehicle: boolean;
+  accident_present: boolean;
+  weather_condition: string;
+  road_capacity?: number;
+}
+
+export interface ManualAnalysisResult {
+  traffic_status: string;
+  congestion_score: number;
+  congestion_level: string;
+  vehicle_density: number;
+  risk_score: number;
+  flow_efficiency: number;
+  factors: string[];
+  predictions: Record<string, {
+    predicted_vehicles: number;
+    predicted_speed: number;
+    predicted_congestion: number;
+    predicted_level: string;
+    confidence: number;
+  }>;
+  recommendations: Array<{
+    priority: string;
+    action: string;
+    reason: string;
+    expected_impact: string;
+  }>;
+  explanation: string;
+}
+
+export interface JudgeEvaluationInput {
+  vehicle_count: number;
+  average_speed: number;
+  lane_occupancy: number;
+  emergency_vehicle: boolean;
+  incident_status: string;
+}
+
+export interface JudgeEvaluationResult {
+  traffic_status: string;
+  traffic_status_label: string;
+  congestion_score: number;
+  congestion_level: string;
+  vehicle_density: number;
+  risk_score: number;
+  severity_score: number;
+  flow_efficiency: number;
+  factors: string[];
+  predictions: Record<string, any>;
+  recommendations: Array<{
+    priority: string;
+    action: string;
+    reason: string;
+    expected_impact: string;
+  }>;
+  ai_reasoning: string;
+  data_integrity_check: string;
+}

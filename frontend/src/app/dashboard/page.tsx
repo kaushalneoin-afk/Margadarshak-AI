@@ -15,9 +15,11 @@ import { ScenarioSimulator } from '@/components/dashboard/ScenarioSimulator'
 import { AICopilot } from '@/components/ai/AICopilot'
 import { AIExplanation } from '@/components/ai/AIExplanation'
 import { SceneWrapper } from '@/components/3d/SceneWrapper'
+import { ManualAnalyzer } from '@/components/dashboard/ManualAnalyzer'
+import { JudgeMode } from '@/components/dashboard/JudgeMode'
 import { useStore } from '@/lib/store'
 import { getDashboardMetrics } from '@/lib/api'
-import { LayoutDashboard, Box, BarChart3, Video, Shield, Play } from 'lucide-react'
+import { LayoutDashboard, Box, BarChart3 } from 'lucide-react'
 
 const viewTabs = [
   { id: 'dashboard', label: 'Command Center', icon: <LayoutDashboard className="w-4 h-4" /> },
@@ -96,11 +98,19 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Bottom row */}
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-              <HeatmapView />
-              <div className="h-[400px]">
-                <AICopilot />
+            {/* Bottom row - Analysis + AI */}
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+              <div className="xl:col-span-2 space-y-6">
+                <HeatmapView />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <ManualAnalyzer />
+                  <JudgeMode />
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div className="h-[420px]">
+                  <AICopilot />
+                </div>
               </div>
             </div>
           </div>

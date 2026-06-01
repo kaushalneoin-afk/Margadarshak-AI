@@ -1,50 +1,39 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from datetime import datetime
-import random
-
+from analytics_engine import TrafficAnalyticsEngine
 from models import PredictionInput
-from utils import (
-    calculate_congestion_score,
-    get_congestion_level,
-    get_prediction_factors,
-    calculate_confidence,
-    generate_recommendations,
-)
 
 router = APIRouter()
+engine = TrafficAnalyticsEngine()
 prediction_history = []
 
 
 @router.post("/api/predict")
 async def predict_congestion(data: PredictionInput):
-    cs = calculate_congestion_score(data.vehicle_count, data.average_speed, data.lane_occupancy)
-    level = get_congestion_level(cs)
-    factors = get_prediction_factors(
-        data.vehicle_count, data.average_speed, data.lane_occupancy, data.historical_congestion
-    )
-    confidence = calculate_confidence(cs)
-    time_horizons = ["15min", "30min", "60min"]
-    predictions = []
-    for th in time_horizons:
-        horizon_hours = int(th.replace("min", "")) / 60.0
-        wave = random.uniform(-0.12, 0.12)
-        future_cs = min(100, max(0, cs + wave * 100))
-        future_level = get_congestion_level(future_cs)
-        predictions.append({
-            "time_horizon": th,
-            "predicted_congestion_score": round(future_cs, 1),
-            "predicted_congestion_level": future_level,
-            "confidence": round(calculate_confidence(future_cs, random.uniform(0.75, 0.95)), 3),
-            "vehicle_count_estimate": int(data.vehicle_count * (1 + wave)),
-        })
-    recs = generate_recommendations(level, data.model_dump())
+    cs = engine.calculate_congestion_score(data.vehicle_count, data.average_speed, data.lane_occupancy)
+    level = engine.get_congestion_level(cs)
+    predictions = engine.generate_predictions(data.vehicle_count, data.average_speed, data.lane_occupancy)
+    risk = engine.calculate_risk_score(data.vehicle_count, data.average_speed, data.lane_occupancy)
+    efficiency = engine.calculate_flow_efficiency(data.average_speed, data.lane_occupancy)
+    recs = engine.generate_recommendations(data.vehicle_count, data.average_speed, data.lane_occupancy)
+
+    factors = []
+    if data.vehicle_count > 600:
+        factors.append({"name": "High vehicle density", "impact": "negative", "value": f"{data.vehicle_count} vehicles", "threshold": "600"})
+    if data.average_speed < 20:
+        factors.append({"name": "Critically slow traffic", "impact": "negative", "value": f"{data.average_speed} km/h", "threshold": "20 km/h"})
+    if data.lane_occupancy > 70:
+        factors.append({"name": "High lane occupancy", "impact": "negative", "value": f"{data.lane_occupancy}%", "threshold": "70%"})
+
     response = {
         "status": "success",
         "timestamp": datetime.now().isoformat(),
         "current_analysis": {
             "congestion_score": cs,
             "congestion_level": level,
-            "confidence": confidence,
+            "risk_score": risk,
+            "flow_efficiency": efficiency,
+            "confidence": round(max(50, min(98, 95 - cs * 0.2)), 1),
         },
         "predictions": predictions,
         "factors": factors,
@@ -61,11 +50,6 @@ async def predict_congestion(data: PredictionInput):
 @router.get("/api/predictions/history")
 async def get_prediction_history(limit: int = 20):
     if limit < 1 or limit > 100:
-        raise HTTPException(400, "Limit must be between 1 and 100")
+        from fastapi import HTTPException; raise HTTPException(400, "Limit must be between 1 and 100")
     history = prediction_history[-limit:] if prediction_history else []
-    return {
-        "status": "success",
-        "total": len(prediction_history),
-        "returned": len(history),
-        "predictions": history,
-    }
+    return {"status": "success", "total": len(prediction_history), "returned": len(history), "predictions": history}
