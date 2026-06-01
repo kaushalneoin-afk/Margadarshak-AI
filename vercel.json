@@ -5,6 +5,6 @@
   "installCommand": "npm install",
   "regions": ["sin1"],
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://ai-traffic-backend.onrender.com"
+    "NEXT_PUBLIC_API_URL": "https://ai-traffic-backend-hnym.onrender.com"
   }
 }
