@@ -28,7 +28,7 @@ export function Navbar() {
               <TrafficCone className="w-4 h-4 text-white" />
             </div>
             <span className="text-lg font-bold text-white">
-              AI Traffic <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Twin</span>
+              Margadarshak <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">AI</span>
             </span>
           </Link>
 

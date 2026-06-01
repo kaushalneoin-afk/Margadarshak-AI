@@ -38,7 +38,7 @@ export function Footer() {
                 <TrafficCone className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="text-lg font-bold text-white">AI Traffic Twin</span>
+                <span className="text-lg font-bold text-white">Margadarshak AI</span>
                 <p className="text-[10px] text-white/30 uppercase tracking-wider">Smart City Platform</p>
               </div>
             </div>
@@ -86,7 +86,7 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/30">
-            &copy; {new Date().getFullYear()} AI Urban Traffic Digital Twin Platform. All rights reserved.
+            &copy; {new Date().getFullYear()} Margadarshak AI. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-xs text-white/20">
             <MapPin className="w-3 h-3" />

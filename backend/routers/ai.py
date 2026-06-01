@@ -32,7 +32,7 @@ TRAFFIC_RESPONSES = {
         "Strategic recommendations: Implement adaptive traffic control, promote alternate routes via digital signage, and coordinate with public transport for capacity augmentation.",
     ],
     "general": [
-        "AI Urban Traffic Digital Twin Platform monitoring {vc} vehicles across the network. Current congestion index: {cs}. All systems operating normally.",
+        "Margadarshak AI Platform monitoring {vc} vehicles across the network. Current congestion index: {cs}. All systems operating normally.",
         "Welcome to the AI Urban Traffic Control Center. I'm monitoring traffic across all major corridors. Current conditions show {level} congestion with {active_inc} active incidents.",
         "Traffic Twin AI active. Analyzing data from {sensors} sensors and cameras. Overall network health: {health}%. Ask me about congestion, predictions, or incident reports.",
     ],

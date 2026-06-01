@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - APP_NAME=AI Urban Traffic Digital Twin
+      - APP_NAME=Margadarshak AI
       - DEBUG=true
       - API_PORT=8000
     restart: unless-stopped

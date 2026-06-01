@@ -41,7 +41,7 @@ export const useStore = create<AppState>((set) => ({
   aiMessages: [
     {
       role: 'ai',
-      content: 'Hello! I am your AI Traffic Assistant. I can help you analyze traffic patterns, predict congestion, and suggest mitigation strategies. How can I help?',
+      content: 'Hello! I am your Margadarshak AI Assistant. I can help you analyze traffic patterns, predict congestion, and suggest mitigation strategies. How can I help?',
       timestamp: new Date().toISOString(),
     },
   ],

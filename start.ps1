@@ -1,5 +1,5 @@
 Write-Host "============================================" -ForegroundColor Cyan
-Write-Host "  AI Urban Traffic Digital Twin Platform" -ForegroundColor Cyan
+Write-Host "  Margadarshak AI Platform" -ForegroundColor Cyan
 Write-Host "  Starting all services..." -ForegroundColor Cyan
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host ""

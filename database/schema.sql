@@ -1,4 +1,4 @@
--- AI Urban Traffic Digital Twin - Database Schema
+-- Margadarshak AI - Database Schema
 -- PostgreSQL 15+
 
 -- Users table for platform authentication

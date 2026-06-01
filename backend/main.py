@@ -8,7 +8,7 @@ from routers import traffic, predictions, emergency, accidents, scenarios, ai, d
 load_dotenv()
 
 app = FastAPI(
-    title=os.getenv("APP_NAME", "AI Urban Traffic Digital Twin"),
+    title=os.getenv("APP_NAME", "Margadarshak AI"),
     description="Backend platform for AI-powered urban traffic management, prediction, and emergency response",
     version="1.0.0",
     docs_url="/docs",
@@ -37,7 +37,7 @@ app.include_router(dashboard.router)
 async def health_check():
     return {
         "status": "healthy",
-        "service": os.getenv("APP_NAME", "AI Urban Traffic Digital Twin"),
+        "service": os.getenv("APP_NAME", "Margadarshak AI"),
         "version": "1.0.0",
         "timestamp": __import__("datetime").datetime.now().isoformat(),
     }

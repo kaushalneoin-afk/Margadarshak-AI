@@ -1,6 +1,6 @@
 @echo off
 echo ============================================
-echo   AI Urban Traffic Digital Twin Platform
+echo   Margadarshak AI Platform
 echo   Starting all services...
 echo ============================================
 echo.

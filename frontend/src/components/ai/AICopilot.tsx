@@ -72,7 +72,7 @@ export function AICopilot() {
           <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
             <Bot className="w-3.5 h-3.5 text-white" />
           </div>
-          AI Traffic Copilot
+          Margadarshak AI Copilot
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col min-h-0">

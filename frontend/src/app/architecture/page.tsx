@@ -57,7 +57,7 @@ export default function ArchitecturePage() {
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">System Architecture</h1>
           <p className="text-white/50 max-w-2xl mx-auto">
-            A modern, scalable, microservices-based architecture powering the AI Urban Traffic Digital Twin Platform.
+            A modern, scalable, microservices-based architecture powering the Margadarshak AI Platform.
           </p>
         </motion.div>
 

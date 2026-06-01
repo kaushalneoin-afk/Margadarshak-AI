@@ -10,7 +10,7 @@ services:
     workingDirectory: backend
     envVars:
       - key: APP_NAME
-        value: AI Urban Traffic Digital Twin
+        value: Margadarshak AI
       - key: DEBUG
         value: false
       - key: PYTHON_VERSION

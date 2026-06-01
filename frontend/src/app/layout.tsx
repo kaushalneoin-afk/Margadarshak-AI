@@ -4,7 +4,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground'
 
 export const metadata: Metadata = {
-  title: 'AI Urban Traffic Digital Twin Platform',
+  title: 'Margadarshak AI',
   description: 'Next-generation AI-powered traffic management platform for smart cities. Real-time monitoring, predictive analytics, and intelligent emergency response coordination.',
   keywords: ['AI', 'traffic', 'digital twin', 'smart city', 'urban mobility', 'predictive analytics'],
 }

@@ -213,7 +213,7 @@ async def run_demo():
     return {
         "status": "success",
         "demo_id": sequence_id,
-        "title": "AI Urban Traffic Digital Twin - Full Demonstration",
+        "title": "Margadarshak AI - Full Demonstration",
         "total_steps": 10,
         "duration_seconds": "simulated",
         "sequence": [step1, step2, step3, step4, step5, step6, step7, step8, step9, step10],
